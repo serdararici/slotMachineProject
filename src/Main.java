@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -43,9 +44,15 @@ public class Main {
             } else {
                 balance -= bet;
             }
+
+            // SPIN ROW
+
+            System.out.println("Spinning...");
+            row = spinRow();
+            printRow(row);
         }
 
-        // SPIN ROW
+
 
         // PRINT ROW
         // GET PAYOUT
@@ -53,5 +60,23 @@ public class Main {
         // DISPLAY EXIT MESSAGE
 
         scanner.close();
+    }
+
+    static String[] spinRow() {
+
+        String[] symbols = {"🍒", "🍉", "🍋", "🔔", "⭐"};
+        String[] row = new String[3];
+        Random random = new Random();
+
+        for(int i = 0; i < row.length; i++) {
+            row[i] = symbols[random.nextInt(symbols.length)];
+        }
+
+        return row;
+    }
+    static void printRow(String[] row) {
+        System.out.println("**************");
+        System.out.println(" " + String.join(" | ", row));
+        System.out.println("**************");
     }
 }
