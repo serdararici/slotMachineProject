@@ -13,6 +13,7 @@ public class Main {
         int bet;
         int payout;
         String[] row;
+        String playAgain;
 
         // DISPLAY WELCOME MESSAGE
 
@@ -29,6 +30,7 @@ public class Main {
 
             // ENTER BET AMOUNT
             bet = scanner.nextInt();
+            scanner.nextLine();
 
             //      VERIFY IF BET > BALANCE
             if(bet > balance) {
@@ -64,13 +66,17 @@ public class Main {
             }
 
             // ASK TO PLAY AGAIN
-            // DISPLAY EXIT MESSAGE
+            System.out.println("Do you want to play again? (Y/N): ");
+            playAgain = scanner.nextLine().toUpperCase();
+
+            if(!playAgain.equals("Y")) {
+                break;
+            }
         }
 
+        // DISPLAY EXIT MESSAGE
 
-
-
-
+        System.out.println("GAME OVER!!! Your final balance is $: " + balance);
 
         scanner.close();
     }
